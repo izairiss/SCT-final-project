@@ -16,12 +16,11 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Bandit Analysis
         uses: PyCQA/bandit-action@v1
         with:
-          path: "."                
-          level: high              
-          confidence: high         
-          exit_zero: true   
+          targets: "."                
+          severity: high              
+          confidence: high        
