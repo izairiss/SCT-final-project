@@ -1,0 +1,27 @@
+name: Bandit
+
+on:
+  push:
+    branches: [ bandit, main ]
+  pull_request:
+    branches: [ bandit, main ]
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  bandit-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Bandit Analysis
+        uses: PyCQA/bandit-action@v1
+        with:
+          targets: "."                
+          severity: high              
+          confidence: high        
